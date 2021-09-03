@@ -17,7 +17,7 @@ class IndexController extends FrontController
             return $this->getResponse()->end();
         }
 
-        $site_title = App::config('ENV_WEB.');
+        $site_title = App::config('ENV_WEB.name');
         $this->assign('site_title', $site_title);
         return $params;
     }
