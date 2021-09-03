@@ -11,4 +11,4 @@
 config/app-config.ignore.json
 
 database/
-vendor/
+

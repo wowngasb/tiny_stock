@@ -1,0 +1,55 @@
+{
+  "name": "wowngasb/tiny",
+  "type": "framework",
+  "description": "A Simple PHP Framework based on Composer.",
+  "keywords": [
+    "tiny",
+    "web",
+    "framework"
+  ],
+  "homepage": "http://github.com/wowngasb/tiny",
+  "license": "MIT",
+  "support": {
+    "issues": "https://github.com/wowngasb/tiny/issues"
+  },
+  "authors": [
+    {
+      "name": "kong lin",
+      "email": "konglin4216@gmail.com",
+      "homepage": "http://github.com/wowngasb"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.0",
+    "symfony/http-foundation": "3.0.*",
+    "illuminate/database": "5.2.*",
+    "illuminate/pagination": "5.2.*",
+    "philo/laravel-blade": "^3.1"
+  },
+  "require-dev": {
+    "php-console/php-console": "^3.1",
+    "phpunit/phpunit": "^4.8",
+    "php-mock/php-mock-phpunit": "^1.1"
+  },
+  "autoload": {
+    "files": [
+      "fast-route/functions.php",
+      "graphql-php/deprecated.php"
+    ],
+    "psr-4": {
+      "Tiny\\": "src/",
+      "phpFastCache\\": "php-fast-cache/",
+      "FastRoute\\": "fast-route/",
+      "GraphQL\\": "graphql-php/",
+      "PhpConsole\\": "php-console/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tiny\\Tests\\": "tests/"
+    }
+  },
+  "config": {
+    "preferred-install": "dist"
+  }
+}
