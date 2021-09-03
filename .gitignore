@@ -1,0 +1,14 @@
+.idea/
+*~
+~*
+*.swp
+*.pyc
+*.pyo
+
+/test.php
+/phpinfo.php
+
+config/app-config.ignore.json
+
+database/
+vendor/

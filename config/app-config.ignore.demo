@@ -1,0 +1,64 @@
+<?php
+
+if (!function_exists('__build_config__')) {
+    function __build_config__()
+    {
+        ini_set('display_errors', 0);
+        ini_set('log_errors', 1);
+        date_default_timezone_set('Asia/Shanghai');
+
+        $root_path = dirname(__DIR__) . DIRECTORY_SEPARATOR;
+        $cache_path = $root_path . 'cache' . DIRECTORY_SEPARATOR;
+
+        // just help ide find include file, not necessary
+        !defined('PLUGIN_PATH') && define('PLUGIN_PATH', $root_path . 'plugin' . DIRECTORY_SEPARATOR);
+        !defined('CACHE_PATH') && define('CACHE_PATH', $cache_path);
+
+        return [
+            'app' => [
+                'dev_srv' => 'http://xxx.pro',
+                // 'dev_log_sql' => 1,
+                // 'dev_log_cache' => 1,
+            ],
+            'ENVIRON' => 'debug',
+            'ROOT_PATH' => $root_path,
+            'CACHE_PATH' => $cache_path,
+            'CRYPT_KEY' => 'xxx',
+            'ENV_DEVELOP_KEY' => 'xxx',
+            'ENV_LOG' => [
+                'path' => $root_path . 'logs' . DIRECTORY_SEPARATOR,  //日志文件存放地址
+                'level' => 'DEBUG',  //日志记录级别  ['ALL' => 0, 'DEBUG' => 10, 'INFO' => 20, 'WARN' => 30, 'ERROR' => 40, 'FATAL' => 50, 'OFF' => 60,]
+            ],
+            'ENV_CACHE' => [
+                'type' => 'files',
+                'config' => [
+                    'path' => $cache_path
+                ]
+            ],
+            'ENV_REDIS' => [
+                'host' => '127.0.0.1',
+                'port' => 6377,
+                'password' => 'xxx',
+                'database' => 0,
+            ],  // 直接使用 redis
+            'ENV_DB' => [
+                'driver' => 'mysql',
+                'host' => 'xxxx.com',
+                'port' => 3306,
+                'database' => 'xxx',
+                'username' => 'xxx',
+                'password' => 'xxx',
+                'charset' => 'utf8',
+                'collation' => 'utf8_general_ci',
+            ],
+            'ENV_WEB' => [
+                'countly_pre' => 'xxx',
+                'devsrv' => 'http://xxx.dev',
+                'name' => 'xxx',
+                'cdn' => ''
+            ],
+        ];
+    }
+}
+
+return __build_config__();
