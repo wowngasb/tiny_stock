@@ -1,0 +1,13 @@
+Flask==0.10.1
+SQLAlchemy==1.1.1
+sqlalchemy_migrate==0.10.0
+Flask-SQLAlchemy==2.1
+MySQL-python==1.2.5
+sqlacodegen==1.1.6
+Flask-GraphQL==1.4.1
+pykl==0.1.4
+
+graphene==1.4.2
+graphene-sqlalchemy==1.1.1
+graphql-core==1.1
+graphql-relay==0.4.5
