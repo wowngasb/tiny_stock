@@ -100,7 +100,7 @@
     <form id="API_Form" action="" class="form-horizontal">
         <h2 class="tip-title">参数列表</h2>
         <div class="row">
-            <div class="actions-bar span10 api-div1">
+            <div class="actions-bar span8 api-div1">
                 <div class="form-actions" id="api_ajax_form">
                 </div>
                 <div class="form-actions offset3">
@@ -109,7 +109,7 @@
                     <button type="reset" class="button">重置</button>
                 </div>
             </div>
-            <div class="actions-bar span14 api-div2">
+            <div class="actions-bar span10 api-div2">
                 <pre id="api-pre"></pre>
             </div>
         </div>

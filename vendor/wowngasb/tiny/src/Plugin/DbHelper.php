@@ -117,7 +117,7 @@ class DbHelper extends Manager
      * 回调函数 参数  callback($type, $event)
      * @param Closure $closure
      */
-    public static function setOrmEventCallback(Closure $closure)
+    public static function setOrmEventCallback(Closure $closure = null)
     {
         self::$_event_callback = $closure;
     }

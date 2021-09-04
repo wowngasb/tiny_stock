@@ -1,17 +1,5 @@
-<?php
-/** @var string $ex_msg */
-/** @var string $ex_type */
-
-/** @var \app\App $app */
-/** @var \app\Controller $ctrl */
-/** @var \app\Request $request */
-/** @var array $routeInfo */
-/** @var string $webname */
-/** @var string $webver */
-/** @var string $cdn */
-?>
-        <!doctype html>
-<html>
+<!doctype html>
+<html data-ver="{{ \app\App::config('ENV_WEB.ver') }}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -89,3 +77,14 @@
 </div>
 </body>
 </html>
+<?php
+/** @var string $ex_msg */
+/** @var string $ex_type */
+
+/** @var \app\App $app */
+/** @var \app\Controller $ctrl */
+/** @var \app\Request $request */
+/** @var array $routeInfo */
+/** @var string $webname */
+/** @var string $webver */
+/** @var string $cdn */

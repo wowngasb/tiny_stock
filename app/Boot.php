@@ -36,18 +36,12 @@ final class Boot extends AbstractBoot
     public static function _useConfigWithTest(Application $app)
     {
         $config = $app->getConfig();
-        $config['ENV_DB']['database'] = $config['ENV_DB']['database_test'];
+        $config['ENV_DB'] = $config['ENV_DB_TEST'];
         $config['ENV_WEB']['countly_pre'] = $config['ENV_WEB']['countly_test'];
         $config['ENV_WEB']['name'] = $config['ENV_WEB']['name_test'];
         $app->setConfig($config);
     }
 
-    /**
-     * 在app run 之前, 设置app 命名空间 并 注册路由
-     * @param Application $app
-     * @return Application
-     * @throws AppStartUpError
-     */
     public static function bootstrap(Application $app)
     {
         if ($app->isBootstrapCompleted()) {

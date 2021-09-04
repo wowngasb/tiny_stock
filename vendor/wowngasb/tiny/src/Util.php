@@ -519,9 +519,10 @@ EOT;
             }
             if (is_float($value)) {
                 $values[] = "{$value}";
-            } elseif (is_numeric($value)) {
+            } elseif (is_int($value)) {
                 $values[] = intval($value);
             } else {
+                $value = strlen($value) > 32 ? (substr($value, 0, 29) . '...') : $value;
                 $value = str_replace('"', '\\"', $value);
                 $values[] = '"' . $value . '"';
             }

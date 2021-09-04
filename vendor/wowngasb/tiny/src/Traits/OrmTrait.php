@@ -136,7 +136,6 @@ trait OrmTrait
      * @param array $orderBy
      * @param array $groupBy
      * @return \Illuminate\Database\Query\Builder
-     * @throws OrmStartUpError
      */
     public static function tableBuilderEx(array $where = [], array $select = [], array $orderBy = [], array $groupBy = [])
     {

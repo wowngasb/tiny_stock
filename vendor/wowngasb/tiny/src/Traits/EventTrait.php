@@ -28,7 +28,7 @@ trait EventTrait
         return false;
     }
 
-    /*
+    /**
      *  注册回调函数
      * @param string $event
      * @param callable $callback

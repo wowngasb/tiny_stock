@@ -276,7 +276,6 @@ class Application extends AbstractDispatch implements RouteInterface
      * @param RouteInterface $router
      * @param AbstractDispatch $dispatcher 处理分发接口
      * @return Application
-     * @throws AppStartUpError
      */
     public function addRoute($route, RouteInterface $router, AbstractDispatch $dispatcher = null)
     {

@@ -10,13 +10,14 @@ class ApiHelper
 
     use LogTrait;
 
-    private static $ignore_method_dict = [
+    const IGNORE_METHOD_DICT = [
         'is_https' => 1,
         'log' => 1,
         'debug' => 1,
         'debugargs' => 1,
         'debugresult' => 1,
         'funcgetargs' => 1,
+        'test' => 1,
         'info' => 1,
         'warn' => 1,
         'error' => 1,
@@ -83,7 +84,7 @@ class ApiHelper
                 $tmp_args[$arg_name] = $tmp;
             } else {
                 $default = $arg['isOptional'] ? $arg['defaultValue'] : '';   //参数未给出时优先使用函数的默认参数，如果无默认参数这设置为空字符串
-                if ($arg['isArray']){
+                if ($arg['isArray']) {
                     $default = !empty($arg['isOptional']) ? $arg['defaultValue'] : [];   //参数未给出时优先使用函数的默认参数，如果无默认参数这设置为 空数组
                 }
                 $tmp_args[$arg_name] = $default;
@@ -324,7 +325,7 @@ EOT;
             return true;
         }
         $name = strtolower($name);
-        return (isset(self::$ignore_method_dict[$name]) && !empty(self::$ignore_method_dict[$name]));
+        return (isset(self::IGNORE_METHOD_DICT[$name]) && !empty(self::IGNORE_METHOD_DICT[$name]));
     }
 
     public static function getApiFileList($path, $base_path = '')

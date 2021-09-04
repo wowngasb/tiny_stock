@@ -10,7 +10,9 @@ namespace app\api;
 
 use app\api\Abstracts\AbstractApi;
 use app\Exception\ApiParamsError;
+use app\Model\StockBase;
 use app\Util;
+use Tiny\OrmQuery\Q;
 
 /**
  * 测试API
@@ -189,12 +191,34 @@ EOT;
         return ['data' => $sum];
     }
 
-    public function testQuery($page = 0, $num = 20, array $sort_option = ['room_id', 'asc'], $room_id = 0, array $room_id_list = [], $room_title = '')
+    /**
+     * 测试查询
+     * @param int $page 分数 页数
+     * @param int $num 枫叶 数量
+     * @param string $sort_option 排序
+     * @param int $code 股票代码
+     * @param string $name 股票名称
+     * @return array
+     */
+    public function testQuery($page = 1, $num = 20, $sort_option = 'id,desc', $code = 0, $name = '')
     {
         $skip = ($page - 1) * $num;
+        $sort_option = explode(',', strtolower($sort_option));
+        $sort_option[0] = in_array($sort_option[0], StockBase::SORTABLE_FIELDS) ? $sort_option[0] : 'id';
+        $sort_option[1] = $sort_option[1] == 'asc' ? 'asc' : 'desc';
 
-        $total = $skip;
-        $list = [];
+        $where = [
+            'stock_code' => Q::where($code, '=', function () use ($code) {
+                return intval($code) > 0;
+            }),
+            'stock_name' => Q::where("%{$name}%", 'like', function () use ($name) {
+                return !empty($name);
+            }),
+        ];
+        $total = StockBase::_count(StockBase::tableBuilderEx($where));
+        $list = StockBase::selectItemArr($skip, $num, $sort_option, $where, [
+            'lday', 'stock_name', 'stock_code', 'stock_tag', 'stock_board', 'updated_at'
+        ]);
         $rst = ['list' => $list, 'total' => $total];
 
         self::$detail_log && self::debugArgs(func_get_args(), __METHOD__, __CLASS__, __LINE__);

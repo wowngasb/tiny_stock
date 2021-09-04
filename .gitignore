@@ -9,3 +9,5 @@
 /phpinfo.php
 
 config/app-config.ignore.json
+resources/views/hqchart_pc/
+resources/views/hqchart_stock/

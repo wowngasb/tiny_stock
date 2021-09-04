@@ -10,10 +10,10 @@ namespace app;
 
 
 use Tiny\Exception\OrmStartUpError;
-use Tiny\Model as _Model;
+use Tiny\Model as ModelAlias;
 use Tiny\Traits\OrmConfig;
 
-class Model extends _Model
+class Model extends ModelAlias
 {
     protected static $cache_time = 0;
     public static $max_select = 100000;
@@ -146,35 +146,9 @@ class Model extends _Model
     #########################################################
 
     public static $_op_record_map = [
-        'user_base' => [
-            'cls' => '\\app\\Model\\UserBase',
-            'name' => '用户',
-            'skip' => [
-                'login_count', 'login_ip', 'login_location', 'login_last'
-            ]
-        ],
-        'chat_base' => [
-            'cls' => '\\app\\Model\\ChatBase',
-            'name' => '聊天会话',
-            'skip' => [
-                'last_msg_id', 'last_msg_at'
-            ]
-        ],
-        'chat_config' => [
-            'cls' => '\\app\\Model\\ChatConfig',
-            'name' => '聊天会话个人配置',
-            'skip' => [
-                'read_msg_id'
-            ]
-        ],
     ];
 
-    /**
-     * @param array $data
-     * @param bool $log_op
-     * @return int
-     * @throws OrmStartUpError
-     */
+
     public static function newItem(array $data, $log_op = true)
     {
         if ($log_op) {
@@ -325,7 +299,9 @@ class Model extends _Model
         'updated_at',    //  TIMESTAMP  记录更新时间
          * */
         // SiteOpRecord::createOne($data);
-        self::debugResult($data);
+        if (self::_logItemChange($op_type, $op_prival)) {
+            self::debugResult($data);
+        }
     }
 
     private static function _diffItemValue($last_value, $this_value)
